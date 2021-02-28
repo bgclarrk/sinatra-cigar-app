@@ -21,11 +21,13 @@ class UsersController < ApplicationController
     end
 
     post '/users/signup' do
+        @user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
 
+        redirect '/users/login'
     end
 
     get '/users/:id' do
-        erb :'/users/#{@user.id}'
+        erb :'/users/:id'
     end
 
 end
